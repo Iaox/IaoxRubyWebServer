@@ -1,0 +1,19 @@
+- if @client_handler.nil?
+    h1 null
+- else
+    - if @client_handler.get_clients.length == 0
+        h1 No connected clients
+    - else
+        h1 We have some connected users
+        ul
+          - @client_handler.get_clients.each do |client|
+              li = client.get_name
+              a href="/kick/#{client.get_name}" kick
+
+- if !@rs_accounts.nil?
+    h1 accounts not null
+    - @rs_accounts.each do |account|
+      h2 = account.username
+      h2 = account.password
+      h2 = "Account available?: #{account.available}"
+      h2 = "Completed tutorial island?: #{account.completed_tutorial_island}"
